@@ -1,0 +1,31 @@
+GET http://localhost:3000/api/users
+x-token: xxxyyy
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name": "Josue Mantilla",
+    "email": "jmantilla@gmail.com",
+    "password": "123456"
+}
+
+# {
+#     "name": "Perla Campos",
+#     "email": "pcamposv@gmail.com",
+#     "password": "123456"
+# }
+
+###
+PUT http://localhost:3000/api/users/601f054672be59942807a1c9
+Content-Type: application/json
+
+{
+    "name": "Diego Castro",
+    "email": "dcastroaurora@gmail.com",
+    "password": "123456"
+}
+
+###
+DELETE http://localhost:3000/api/users/601f8a94d969c5c3f4d6e60c
