@@ -1,0 +1,7 @@
+###
+GET http://localhost:3000/api/search/collections/micayla
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+
+###
+GET http://localhost:3000/api/search/collection/users/diego
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js

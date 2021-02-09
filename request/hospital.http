@@ -1,0 +1,22 @@
+###
+GET http://localhost:3000/api/hospital
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+
+
+###
+POST http://localhost:3000/api/hospital
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+Content-Type: application/json
+
+{
+    "name": "Hospital Regional Alcidez Carrión"
+}
+
+###
+PUT http://localhost:3000/api/hospital/6020bb0312ca220c29f1215b
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+Content-Type: application/json
+
+{
+    "name": "Hospital Regional de Trujilloxxxx"
+}

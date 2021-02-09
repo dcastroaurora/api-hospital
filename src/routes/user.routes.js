@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import validateParams from "../middlewares/validate-params";
-import * as controller from "../controllers/users.controllers";
+import * as controller from "../controllers/user.controllers";
 import validateJWT from "../middlewares/validate-jwt";
 
 const router = Router();

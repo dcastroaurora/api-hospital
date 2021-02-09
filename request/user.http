@@ -1,0 +1,31 @@
+GET http://localhost:3000/api/user?size=4&page=2
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+
+###
+POST http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+    "name": "Josue Mantilla",
+    "email": "jmantilla@gmail.com",
+    "password": "123456"
+}
+
+# {
+#     "name": "Perla Campos",
+#     "email": "pcamposv@gmail.com",
+#     "password": "123456"
+# }
+
+###
+PUT http://localhost:3000/api/user/601f054672be59942807a1c9
+Content-Type: application/json
+
+{
+    "name": "Diego Castro",
+    "email": "dcastroaurora@gmail.com",
+    "password": "123456"
+}
+
+###
+DELETE http://localhost:3000/api/user/601f8a94d969c5c3f4d6e60c

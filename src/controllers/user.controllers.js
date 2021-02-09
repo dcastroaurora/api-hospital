@@ -1,15 +1,28 @@
 import { response } from "express";
 import bcrypt from "bcryptjs";
-import User from "../models/User";
 import generateJWT from "../helpers/jwt";
+import pagination from "../helpers/pagination";
+import User from "../models/User";
 
 export const getUsers = async (req, res = response) => {
   try {
-    const users = await User.find();
-    res.json(users);
+    const { size, page, name } = req.query;
+    const condition = name
+      ? { name: { $regex: new RegExp(name), $options: "i" } }
+      : {};
+
+    const { limit, offset } = pagination(size, page);
+    const users = await User.paginate(condition, { limit, offset });
+
+    res.json({
+      totalItems: users.totalDocs,
+      users: users.docs,
+      totalPages: users.totalPages,
+      currentPage: users.page,
+    });
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Something goes wrong retrieving users",
+      message: error.message || "An error occurred while retrieving the users",
     });
   }
 };
@@ -40,7 +53,7 @@ export const createUser = async (req, res = response) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Something goes wrong retrieving users",
+      message: error.message || "An error occurred while creating the users",
     });
   }
 };
@@ -58,7 +71,7 @@ export const getUser = async (req, res = response) => {
     res.json(user);
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Something goes wrong retrieving user",
+      message: error.message || "An error occurred while retrieving a user",
     });
   }
 };
@@ -91,12 +104,12 @@ export const updateUser = async (req, res = response) => {
     const user = await User.findByIdAndUpdate(id, req.body, { new: true });
 
     res.json({
-      message: "User Updated",
+      message: "Updated user",
       user,
     });
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Something goes wrong retrieving user",
+      message: error.message || "An error occurred while updating the user",
     });
   }
 };
@@ -115,7 +128,7 @@ export const deleteUser = async (req, res = response) => {
     res.json({ message: "User deleted" });
   } catch (error) {
     res.status(500).json({
-      message: error.message || "Something goes wrong retrieving User",
+      message: error.message || "An error occurred while deleting the user",
     });
   }
 };
