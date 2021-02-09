@@ -19,6 +19,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//public routes
+app.use(express.static("public"));
+
 //routes
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to my application" });

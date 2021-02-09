@@ -15,4 +15,10 @@ router.post(
   controller.login
 );
 
+router.post(
+  "/google",
+  [check("token", "Token required").not().isEmpty(), validateParams],
+  controller.googleSignIn
+);
+
 export default router;
