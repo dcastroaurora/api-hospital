@@ -39,7 +39,7 @@ export const login = async (req, res = response) => {
   }
 };
 
-export const googleSignIn = async (req, res = response) => {
+export const google = async (req, res = response) => {
   const tokenGoogle = req.body.token;
 
   try {
@@ -72,6 +72,22 @@ export const googleSignIn = async (req, res = response) => {
   } catch (error) {
     res.status(401).json({
       message: "Token invalid",
+    });
+  }
+};
+
+export const renewToken = async (req, res = response) => {
+  const id = req.id;
+  try {
+    const token = await generateJWT(id);
+
+    res.json({
+      token,
+      message: "New token was generated successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while renewing the token",
     });
   }
 };

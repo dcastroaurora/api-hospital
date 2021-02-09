@@ -16,9 +16,10 @@ export const getDoctors = async (req, res = response) => {
 };
 
 export const createDoctor = async (req, res = response) => {
+  const userId = req.id;
   try {
     const doctor = new Doctor(req.body);
-    doctor.userId = req.id;
+    doctor.userId = userId;
     await doctor.save();
 
     res.json({
@@ -52,6 +53,7 @@ export const getDoctor = async (req, res = response) => {
 
 export const updateDoctor = async (req, res = response) => {
   const { id } = req.params;
+  const userId = req.id;
 
   try {
     const doctor = await Doctor.findById(id);
@@ -62,6 +64,7 @@ export const updateDoctor = async (req, res = response) => {
       });
     }
 
+    req.body.userId = userId;
     const updatedDoctor = await Doctor.findByIdAndUpdate(id, req.body, {
       new: true,
     });

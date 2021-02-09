@@ -14,9 +14,10 @@ export const getHospitals = async (req, res = response) => {
 };
 
 export const createHospital = async (req, res = response) => {
+  const userId = req.id;
   try {
     const hospital = new Hospital(req.body);
-    hospital.userId = req.id;
+    hospital.userId = userId;
     await hospital.save();
 
     res.json({
@@ -50,16 +51,17 @@ export const getHospital = async (req, res = response) => {
 
 export const updateHospital = async (req, res = response) => {
   const { id } = req.params;
-
+  const userId = req.id;
   try {
     const hospital = await Hospital.findById(id);
 
     if (!hospital) {
-      return res.status(400).json({
+      return res.status(404).json({
         message: "Hospital does not exists.",
       });
     }
-    // req.body.userId = req.id;
+
+    req.body.userId = userId;
     const updatedHospital = await Hospital.findByIdAndUpdate(id, req.body, {
       new: true,
     });
@@ -81,7 +83,7 @@ export const deleteHospital = async (req, res = response) => {
     const hospital = await Hospital.findById(id);
 
     if (!hospital) {
-      return res.status(400).json({
+      return res.status(404).json({
         message: "Hospital does not exists.",
       });
     }

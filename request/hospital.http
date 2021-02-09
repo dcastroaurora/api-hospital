@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/api/hospital
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjgyODg1NCwiZXhwIjoxNjEyOTE1MjU0fQ.RR6oyzMzZsZS6AokqRIbd_TwSBL9MTqCUG7xsy5xuCk
 
 
 ###
@@ -14,9 +14,13 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:3000/api/hospital/6020bb0312ca220c29f1215b
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjgyODg1NCwiZXhwIjoxNjEyOTE1MjU0fQ.RR6oyzMzZsZS6AokqRIbd_TwSBL9MTqCUG7xsy5xuCk
 Content-Type: application/json
 
 {
-    "name": "Hospital Regional de Trujilloxxxx"
+    "name": "Hospital Regional de Trujillo"
 }
+
+###
+DELETE http://localhost:3000/api/hospital/6020bb1b12ca220c29f1215c
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjgyODg1NCwiZXhwIjoxNjEyOTE1MjU0fQ.RR6oyzMzZsZS6AokqRIbd_TwSBL9MTqCUG7xsy5xuCk
