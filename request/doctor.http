@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/api/doctor
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjgyODg1NCwiZXhwIjoxNjEyOTE1MjU0fQ.RR6oyzMzZsZS6AokqRIbd_TwSBL9MTqCUG7xsy5xuCk
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA2NTRkMWYyYjg5ZWE5MDRiNzIyNyIsImlhdCI6MTYxMzczOTk0MCwiZXhwIjoxNjEzODI2MzQwfQ.2f5QfSECKovkkn-ZlTzXwCtK73LyHAe3XizFydxf6LQ
 
 ###
 POST http://localhost:3000/api/doctor
@@ -13,13 +13,13 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/doctor/6020be383a728691d4d73bbc
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjgyODg1NCwiZXhwIjoxNjEyOTE1MjU0fQ.RR6oyzMzZsZS6AokqRIbd_TwSBL9MTqCUG7xsy5xuCk
+PUT http://localhost:3000/api/doctor/60230a23776a403431bd25c5
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA2NTRkMWYyYjg5ZWE5MDRiNzIyNyIsImlhdCI6MTYxMzczOTk0MCwiZXhwIjoxNjEzODI2MzQwfQ.2f5QfSECKovkkn-ZlTzXwCtK73LyHAe3XizFydxf6LQ
 Content-Type: application/json
 
 {
-    "name": "Gilberto Santa Rosa",
-    "hospitalId": "6020bb1b12ca220c29f1215c"
+    "name": "Carlos Mendez",
+    "hospitalId": "602f14afffcd5e1474c9c3c3"
 }
 
 ###

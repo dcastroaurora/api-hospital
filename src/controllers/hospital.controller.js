@@ -1,14 +1,43 @@
 import { response } from "express";
+import fs from "fs";
+import pagination from "../helpers/pagination";
 import Hospital from "../models/Hospital";
 
 export const getHospitals = async (req, res = response) => {
   try {
-    const hospitals = await Hospital.find().populate("userId", "name email");
-    res.json(hospitals);
+    const { size, page, name } = req.query;
+    const condition = name
+      ? { name: { $regex: new RegExp(name), $options: "i" } }
+      : {};
+
+    const { limit, offset } = pagination(size, page);
+    const hospitals = await Hospital.paginate(condition, { limit, offset });
+
+    res.json({
+      totalItems: hospitals.totalDocs,
+      data: hospitals.docs,
+      totalPages: hospitals.totalPages,
+      currentPage: hospitals.page,
+    });
   } catch (error) {
     res.status(500).json({
       message:
         error.message || "An error occurred while retrieving the hospitals",
+    });
+  }
+};
+
+export const findHospitals = async (req, res = response) => {
+  try {
+    const hospitals = await Hospital.find();
+    res.json({
+      message: "Hospitals retrieved",
+      data: hospitals,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message:
+        error.message || "An error occurred while retrieving a hospitals",
     });
   }
 };
@@ -53,22 +82,22 @@ export const updateHospital = async (req, res = response) => {
   const { id } = req.params;
   const userId = req.id;
   try {
-    const hospital = await Hospital.findById(id);
+    const hospitalExists = await Hospital.findById(id);
 
-    if (!hospital) {
+    if (!hospitalExists) {
       return res.status(404).json({
         message: "Hospital does not exists.",
       });
     }
 
     req.body.userId = userId;
-    const updatedHospital = await Hospital.findByIdAndUpdate(id, req.body, {
+    const hospital = await Hospital.findByIdAndUpdate(id, req.body, {
       new: true,
     });
 
     res.json({
       message: "Updated hospital",
-      hospital: updatedHospital,
+      hospital,
     });
   } catch (error) {
     res.status(500).json({
@@ -87,7 +116,10 @@ export const deleteHospital = async (req, res = response) => {
         message: "Hospital does not exists.",
       });
     }
-    await Hospital.findByIdAndDelete(id);
+    await Hospital.findByIdAndDelete(id).then(() => {
+      const oldFile = `./uploads/hospital/${hospital.image}`;
+      if (fs.existsSync(oldFile)) fs.unlinkSync(oldFile);
+    });
     res.json({ message: "Hospital deleted" });
   } catch (error) {
     res.status(500).json({

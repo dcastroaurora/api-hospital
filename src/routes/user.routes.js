@@ -24,7 +24,7 @@ router.put(
     validateJWT,
     check("name", "Name required").not().isEmpty(),
     check("email", "Email required").isEmail(),
-    // check("role", "El role es obligatorio").not().isEmpty(),
+    check("role", "El role es obligatorio").not().isEmpty(),
     validateParams,
   ],
   controller.updateUser

@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import paginate from "mongoose-paginate-v2";
 
 const schema = new Schema(
   {
@@ -31,5 +32,7 @@ schema.method("toJSON", function () {
   object.id = _id;
   return object;
 });
+
+schema.plugin(paginate);
 
 export default model("Doctor", schema);

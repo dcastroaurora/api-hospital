@@ -12,7 +12,8 @@ routes.post(
   [validateJWT, check("name", "Name required").not().isEmpty(), validateParams],
   controller.createHospital
 );
-routes.get("/:id", validateJWT, controller.getHospital);
+// routes.get("/:id", validateJWT, controller.getHospital);
+routes.get("/find", validateJWT, controller.findHospitals);
 routes.put(
   "/:id",
   [validateJWT, check("name", "Name required").not().isEmpty(), validateParams],

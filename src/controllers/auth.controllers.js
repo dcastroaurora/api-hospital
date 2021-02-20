@@ -71,7 +71,7 @@ export const google = async (req, res = response) => {
     });
   } catch (error) {
     res.status(401).json({
-      message: "Token invalid",
+      message: "An error occurred while authenticating to Google",
     });
   }
 };
@@ -79,10 +79,11 @@ export const google = async (req, res = response) => {
 export const renewToken = async (req, res = response) => {
   const id = req.id;
   try {
+    const user = await User.findById(id);
     const token = await generateJWT(id);
-
     res.json({
       token,
+      user,
       message: "New token was generated successfully",
     });
   } catch (error) {

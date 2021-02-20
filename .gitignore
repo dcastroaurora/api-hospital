@@ -3,3 +3,15 @@
 node_modules
 
 dist
+
+uploads/hospital/**.jpg
+uploads/hospital/**.png
+uploads/hospital/**.gif
+
+uploads/doctor/**.jpg
+uploads/doctor/**.png
+uploads/doctor/**.gif
+
+uploads/user/**.jpg
+uploads/user/**.png
+uploads/user/**.gif

@@ -1,5 +1,6 @@
 import { response } from "express";
 import bcrypt from "bcryptjs";
+import fs from "fs";
 import generateJWT from "../helpers/jwt";
 import pagination from "../helpers/pagination";
 import User from "../models/User";
@@ -16,7 +17,7 @@ export const getUsers = async (req, res = response) => {
 
     res.json({
       totalItems: users.totalDocs,
-      users: users.docs,
+      data: users.docs,
       totalPages: users.totalPages,
       currentPage: users.page,
     });
@@ -29,7 +30,6 @@ export const getUsers = async (req, res = response) => {
 
 export const createUser = async (req, res = response) => {
   const { email, password } = req.body;
-
   try {
     const userExists = await User.findOne({ email });
 
@@ -100,7 +100,6 @@ export const updateUser = async (req, res = response) => {
         });
       }
     }
-
     const user = await User.findByIdAndUpdate(id, req.body, { new: true });
 
     res.json({
@@ -117,14 +116,17 @@ export const updateUser = async (req, res = response) => {
 export const deleteUser = async (req, res = response) => {
   const { id } = req.params;
   try {
-    const userExists = await User.findById(id);
+    const user = await User.findById(id);
 
-    if (!userExists) {
+    if (!user) {
       return res.status(400).json({
         message: "User does not exists.",
       });
     }
-    await User.findByIdAndDelete(id);
+    await User.findByIdAndDelete(id).then(() => {
+      const oldFile = `./uploads/user/${user.image}`;
+      if (fs.existsSync(oldFile)) fs.unlinkSync(oldFile);
+    });
     res.json({ message: "User deleted" });
   } catch (error) {
     res.status(500).json({

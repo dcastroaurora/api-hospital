@@ -8,6 +8,6 @@ const router = Router();
 router.use(uploadFile());
 
 router.post("/:collection/:id", validateJWT, controller.uploadFile);
-router.get("/:collection/:id", validateJWT, controller.getFile);
+router.get("/:collection/:id", controller.getFile);
 
 export default router;

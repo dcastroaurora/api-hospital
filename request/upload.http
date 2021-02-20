@@ -1,5 +1,7 @@
 ###
-POST http://localhost:3000/api/upload/doctor/123
+POST http://localhost:3000/api/upload/user/{idUser}
 x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
-Content-Type: multipart/form-data; boundary=----HereGoes
-# Content-Type: image/png
+
+
+GET http://localhost:3000/api/upload/user/{idImage}
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA1NjBjZjNmM2FmYmRlMGYyMTA1OSIsImlhdCI6MTYxMjczODM4NSwiZXhwIjoxNjEyODI0Nzg1fQ.Bkbz9XbVXu2iyqouaa294m2uHcmkE8RTBr2tHMIh1Js
