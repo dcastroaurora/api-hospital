@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 import validateParams from "../middlewares/validate-params";
 import * as controller from "../controllers/user.controllers";
-import validateJWT from "../middlewares/validate-jwt";
+import { validateJWT, validateAdminRole } from "../middlewares/validate-jwt";
 
 const router = Router();
 
@@ -22,6 +22,7 @@ router.put(
   "/:id",
   [
     validateJWT,
+    validateAdminRole,
     check("name", "Name required").not().isEmpty(),
     check("email", "Email required").isEmail(),
     check("role", "El role es obligatorio").not().isEmpty(),
@@ -29,6 +30,6 @@ router.put(
   ],
   controller.updateUser
 );
-router.delete("/:id", validateJWT, controller.deleteUser);
+router.delete("/:id", validateJWT, validateAdminRole, controller.deleteUser);
 
 export default router;

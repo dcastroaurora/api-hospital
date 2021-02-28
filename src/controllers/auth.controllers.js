@@ -4,6 +4,7 @@ import { OAuth2Client } from "google-auth-library";
 import User from "../models/User";
 import generateJWT from "../helpers/jwt";
 import config from "../config";
+import menu from "../helpers/menu";
 
 const client = new OAuth2Client(config.google_id);
 
@@ -31,6 +32,7 @@ export const login = async (req, res = response) => {
     res.json({
       message: "Login successful",
       token,
+      menu: menu(user.role),
     });
   } catch (error) {
     res.status(500).json({
@@ -44,7 +46,6 @@ export const google = async (req, res = response) => {
 
   try {
     const { name, email, picture } = await verify(tokenGoogle);
-
     const user = await User.findOne({ email });
     let newUser;
 
@@ -68,6 +69,7 @@ export const google = async (req, res = response) => {
     res.json({
       message: "Login Google Successfull",
       token,
+      menu: menu(newUser.role),
     });
   } catch (error) {
     res.status(401).json({
@@ -85,6 +87,7 @@ export const renewToken = async (req, res = response) => {
       token,
       user,
       message: "New token was generated successfully",
+      menu: menu(user.role),
     });
   } catch (error) {
     res.status(500).json({

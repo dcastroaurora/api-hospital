@@ -11,7 +11,10 @@ export const getDoctors = async (req, res = response) => {
       : {};
 
     const { limit, offset } = pagination(size, page);
-    const doctors = await Doctor.paginate(condition, { limit, offset });
+    const doctors = await Doctor.paginate(condition, {
+      limit,
+      offset,
+    });
 
     res.json({
       totalItems: doctors.totalDocs,

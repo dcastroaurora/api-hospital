@@ -18,11 +18,12 @@ Content-Type: application/json
 # }
 
 ###
-PUT http://localhost:3000/api/user/601f054672be59942807a1c9
+PUT http://localhost:3000/api/user/6029b405e0721cc4a1389cd8
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjA2NjAyOTU4M2FlZTAzODY5NzI0MCIsImlhdCI6MTYxNDUzNDYwMywiZXhwIjoxNjE0NjIxMDAzfQ.0MkwnrkOL3NYdtxYr4TAtDIa8HrP6PRLhUmS4TdwQ-E
 Content-Type: application/json
 
 {
-    "name": "Diego Castro",
+    "name": "Diego Castro bbbbb",
     "email": "dcastroaurora@gmail.com",
     "password": "123456"
 }

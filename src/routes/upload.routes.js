@@ -1,6 +1,6 @@
 import { Router } from "express";
 import uploadFile from "express-fileupload";
-import validateJWT from "../middlewares/validate-jwt";
+import { validateJWT } from "../middlewares/validate-jwt";
 import * as controller from "../controllers/upload.controllers";
 
 const router = Router();
