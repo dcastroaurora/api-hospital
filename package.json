@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js --exec babel-node",
-    "build": "babel src --out-dir dist",
-    "heroku-postbuild": "babel src --out-dir dist",
-    
-    "start": "node dist/index.js"
+    "build": "babel src --out-dir dist",    
+    "start": "node dist/index.js",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
