@@ -23,14 +23,14 @@ export const uploadFile = async (req, res = response) => {
     const fileName = `${uuidv4()}.${extension}`;
 
     //path to save file
-    // const path = `./uploads/${collection}/${fileName}`;
-    const pathFile = path.join(
-      __dirname,
-      `../../uploads/${collection}/${fileName}`
-    );
+    const path = `../../uploads/${collection}/${fileName}`;
+    // const pathFile = path.join(
+    //   __dirname,
+    //   `../../uploads/${collection}/${fileName}`
+    // );
 
     //move file
-    file.mv(pathFile, async (error) => {
+    file.mv(path, async (error) => {
       if (error) {
         return res.status(500).json({
           message: "An error occurred while moving the file",
