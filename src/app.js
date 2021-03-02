@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import path from "path";
 import UserRoutes from "./routes/user.routes";
 import AuthRoutes from "./routes/auth.routes";
 import HospitalRoutes from "./routes/hospital.routes";
@@ -33,5 +34,9 @@ app.use("/api/hospital", HospitalRoutes);
 app.use("/api/doctor", DoctorRoutes);
 app.use("/api/search", SearchRoutes);
 app.use("/api/upload", UploadRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, `../public/index.html`));
+});
 
 export default app;
