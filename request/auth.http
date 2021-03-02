@@ -1,9 +1,10 @@
 ###
-POST http://localhost:3000/api/auth/login
+# POST http://localhost:3000/api/auth/login
+POST https://hospital-admin-api.herokuapp.com/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "enrique@gmail.com",
+    "email": "mcastro@gmail.com",
     "password": "123456"
 }
 
