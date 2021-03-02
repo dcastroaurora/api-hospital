@@ -27,7 +27,9 @@ export const uploadFile = async (req, res = response) => {
 
     //move file
     console.log(path);
+    console.log(file);
     file.mv(path, async (error) => {
+      console.log(error);
       if (error) {
         return res.status(500).json({
           message: "An error occurred while moving the file",
